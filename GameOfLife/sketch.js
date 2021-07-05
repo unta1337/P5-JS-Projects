@@ -1,4 +1,4 @@
-let res = 50;
+let res = 20;
 
 let len;
 let rows, cols;
