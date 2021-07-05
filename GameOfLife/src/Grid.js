@@ -1,8 +1,9 @@
 class Grid {
-  constructor(rows, cols, len) {
+  constructor(rows, cols, len, color) {
     this.rows = rows;
     this.cols = cols;
     this.len = len;
+    this.color = color;
     
     this.grid = Tools.create2DArray(this.rows, this.cols);
   }
@@ -13,7 +14,6 @@ class Grid {
 
         let rand = random(1);
         let state = rand < prob ? 1 : 0;
-        
         this.grid[y][x] = state;
       }
     }
@@ -63,7 +63,7 @@ class Grid {
       for (let x = 0; x < cols; x++) {
         let state = this.grid[y][x];
         
-        fill(state * 255);
+        fill(this.color[state]);
         rect(x * len + offset, y * len + offset, len - offset * 2, len - offset * 2);
       }
     }
