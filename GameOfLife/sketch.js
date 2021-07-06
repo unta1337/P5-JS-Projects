@@ -78,6 +78,12 @@ function draw() {
     let x = floor(mouseX / grid.len);
     let y = floor(mouseY / grid.len);
     
+    let xBound = (0 <= x && x < grid.cols);
+    let yBound = (0 <= y && y < grid.rows);
+    if (!xBound || !yBound) {
+      return;
+    }
+    
     if (mouseButton === LEFT) {
       grid.grid[y][x] = 1;
     } else if (mouseButton === RIGHT) {
