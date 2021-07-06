@@ -19,6 +19,7 @@ let showHelp = false;
 
 function preload() {
   Cascadia = loadFont('assets/CascadiaCode.ttf');
+  CascadiaItalic = loadFont('assets/CascadiaCodeItalic.ttf');
 }
 
 function setup() {
@@ -62,7 +63,7 @@ function draw() {
     grid.update();
   } else {
     push();
-    textFont(Cascadia);
+    textFont(CascadiaItalic);
     textSize(FontSize);
     textStyle(ITALIC);
     stroke(255);
