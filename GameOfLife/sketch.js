@@ -17,6 +17,10 @@ let redrawGrid = true;
 let showGrid = false;
 let showHelp = false;
 
+function preload() {
+  Cascadia = loadFont('assets/CascadiaCode.ttf');
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   
@@ -58,7 +62,7 @@ function draw() {
     grid.update();
   } else {
     push();
-    textFont('Cascadia Mono');
+    textFont(Cascadia);
     textSize(FontSize);
     textStyle(ITALIC);
     stroke(255);
@@ -98,7 +102,7 @@ function showInfo() {
   rect(width / 2, height / 2, fontSize * 25, fontSize * 18);
   
   strokeWeight(3);
-  textFont('Cascadia Mono');
+  textFont(Cascadia);
   textSize(fontSize);
   textAlign(CENTER);
   fill(0);
