@@ -47,7 +47,9 @@ class Projectile {
   }
   
   show() {
+    push();
     fill(theme);
     ellipse(this.pos.x, this.pos.y, this.r, this.r);
+    pop();
   }
 }

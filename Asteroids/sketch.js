@@ -11,7 +11,7 @@ let gameEnd;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //createCanvas(1280, 720);
+  //createCanvas(1080, 1920);
   
   gameEnd = false;
   
@@ -51,16 +51,13 @@ function draw() {
   noFill();
   
   player.show();
-  player.controls();
-  player.update();
+  if (gameEnd != 'lose') {
+    player.controls();
+    player.update();
+  }
   
   outer:
   for (let i = 0; i < asteroids.length; i++) {
-    if (asteroids[i].collision(player)) {
-      noLoop();
-      console.log("oops");
-    }
-    
     for (let j = 0; j < player.projectiles.length; j++) {
       if (asteroids[i].collision(player.projectiles[j])) {
         player.projectiles.splice(j, 1);
@@ -74,19 +71,29 @@ function draw() {
       }
     }
   }
-  
+
   for (let asteroid of asteroids) {
-    try {
-    asteroid.update();
-    asteroid.show();  
-    } catch (e) {
-      console.log(asteroid);
+    if (asteroid.collision(player)) {
+      gameEnd = 'lose';
     }
+    if (gameEnd != 'lose') {
+      asteroid.update();
+    }
+    asteroid.show();
   }
   
   if (asteroids.length === 0 && !gameEnd) {
-    console.log("You win!");
-    gameEnd = true;
+    gameEnd = 'win';
+  }
+  
+  if (gameEnd === 'lose') {
+    Tools.text(width / 2, height / 2, "YOU LOSE", 32, true);
+  } else if (gameEnd === 'win') {
+    Tools.text(width / 2, height / 2, "YOU WIN", 32, true);
+  }
+  
+  if (keyIsDown('H'.charCodeAt(0))) {
+    GameInfo.show();
   }
 }
 
