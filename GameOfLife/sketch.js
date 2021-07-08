@@ -17,6 +17,11 @@ let redrawGrid = true;
 let showGrid = false;
 let showHelp = false;
 
+function preload() {
+  Cascadia = loadFont('assets/CascadiaCode.ttf');
+  CascadiaItalic = loadFont('assets/CascadiaCodeItalic.ttf');
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   
@@ -58,7 +63,7 @@ function draw() {
     grid.update();
   } else {
     push();
-    textFont('Cascadia Mono');
+    textFont(CascadiaItalic);
     textSize(FontSize);
     textStyle(ITALIC);
     stroke(255);
@@ -72,6 +77,12 @@ function draw() {
   if (mouseIsPressed) {
     let x = floor(mouseX / grid.len);
     let y = floor(mouseY / grid.len);
+    
+    let xBound = (0 <= x && x < grid.cols);
+    let yBound = (0 <= y && y < grid.rows);
+    if (!xBound || !yBound) {
+      return;
+    }
     
     if (mouseButton === LEFT) {
       grid.grid[y][x] = 1;
@@ -98,7 +109,7 @@ function showInfo() {
   rect(width / 2, height / 2, fontSize * 25, fontSize * 18);
   
   strokeWeight(3);
-  textFont('Cascadia Mono');
+  textFont(Cascadia);
   textSize(fontSize);
   textAlign(CENTER);
   fill(0);
