@@ -26,7 +26,7 @@ class Tools {
     for (let i = 0; i < textLength; i++) {
       beginShape();
       
-      let charCode = text.charCodeAt(i) - 65;
+      let charCode = text.charCodeAt(i);
       
       if (!l.letters[charCode]) {
         continue; 
@@ -37,9 +37,8 @@ class Tools {
       }
       
       for (let j = 0; j < l.letters[charCode].length; j++) {
-        vertex((len + padding) * i + l.letters[charCode][j][0] * len, l.letters[charCode][j][1] * len); 
+        vertex((len + padding) * i + l.letters[charCode][j][0] * len, l.letters[charCode][j][1] * len);
       }
-      
       
       endShape();
     }
