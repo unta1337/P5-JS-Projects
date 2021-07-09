@@ -1,4 +1,4 @@
-let themes, theme;
+let themes, theme, themeIndex;
 
 let sclFactor, scl;
 let textScl;
@@ -21,12 +21,14 @@ function setup() {
   
   gameEnd = false;
   
-  themes = {
-    white: color(255),
-    green: color(50, 220, 50),
-    yellow: color(255, 255, 100)
-  };
-  theme = themes.green;
+  themes = [
+    color(255),
+    color(50, 220, 50),
+    color(255, 255, 100)
+  ];
+  
+  themeIndex = 0;
+  theme = themes[themeIndex];
   
   sclFactor = sqrt(width * width + height * height) * 0.05;
   scl = sclFactor < SCL_LIMIT ? sclFactor : SCL_LIMIT;
@@ -55,6 +57,8 @@ function draw() {
   stroke(theme);
   strokeWeight(scl * 0.03);
   noFill();
+  
+  theme = themes[themeIndex];
   
   player.show();
   if (gameEnd != 'lose') {
@@ -124,6 +128,10 @@ function keyPressed() {
         gameEnd = 0;
       }
       break;
+      case 'C'.charCodeAt(0):
+        themeIndex++;
+        themeIndex %= themes.length;
+        break;
   }
 }
 

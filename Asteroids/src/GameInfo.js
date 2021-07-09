@@ -6,13 +6,17 @@ class GameInfo {
     let posY = height / 2;
     let size = textScl;
     let offset = size * 1.5;
-    rect(width / 2, height / 2, size * 25, size * 14);
-    Tools.text(width / 2, posY + offset * -3.5, 'ASTEROIDS BY SY KIM', size, true);
-    Tools.text(width / 2, posY + offset * -1.5, 'PRESS ARROW KEYS TO MOVE', size, true);
-    Tools.text(width / 2, posY + offset * -0.5, 'PRESS SPACEBAR TO SHOOT', size, true); 
-    Tools.text(width / 2, posY + offset * 0.5, 'PRESS R TO RESET GAME', size, true);
-    Tools.text(width / 2, posY + offset * 1.5, 'PRESS T TO CONTUNUE GAME', size, true); 
-    Tools.text(width / 2, posY + offset * 3.5, 'HOLD H TO SHOW HELP MESSAGE BOX', size, true); 
+    rect(width / 2, height / 2, size * 25, size * 16);
+    Tools.text(width / 2, posY + offset * -4.5, 'ASTEROIDS BY SY KIM', size, true);
+    
+    Tools.text(width / 2, posY + offset * -2.5, 'PRESS ARROW KEYS TO MOVE', size, true);
+    Tools.text(width / 2, posY + offset * -1.5, 'PRESS SPACEBAR TO SHOOT', size, true); 
+    Tools.text(width / 2, posY + offset * -0.5, 'PRESS R TO RESET GAME', size, true);
+    Tools.text(width / 2, posY + offset * 0.5, 'PRESS T TO CONTINUE GAME', size, true);
+    
+    Tools.text(width / 2, posY + offset * 2.5, 'PRESS C TO CHANGE COLOR THEME', size, true);
+    
+    Tools.text(width / 2, posY + offset * 4.5, 'HOLD H TO SHOW HELP MESSAGE BOX', size, true); 
     pop();
   }
   
