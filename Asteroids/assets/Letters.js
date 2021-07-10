@@ -65,6 +65,3 @@ class Letters {
     }
   }
 }
-
-// lowers
-// symbols

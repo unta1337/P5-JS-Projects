@@ -1,19 +1,26 @@
 <!DOCTYPE html><html lang="en"><head>
-    <title>unta1337/p5Thingys/Asteroid</title>
+    <title>unta1337/p5Thingys/Asteroids</title>
     <script src="p5.js"></script>
     <script src="p5.sound.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
-
   </head>
   <body>
-    <script src="./lib/Tools.js"></script>
-    <script src="./src/Projectile.js"></script>
-    <script src="./src/Ship.js"></script>
-    <script src="./src/Asteroid.js"></script>
+    <!-- Load assets -->
     <script src="./assets/Letters.js"></script>
-    <script src="./src/GameInfo.js"></script>
+    
+    <!-- Load libraries -->
+    <script src="./lib/Tools.js"></script>
+    
+    <!-- Load game mechanics -->
+    <script src="./src/mechanics/Object.js"></script>
+    <script src="./src/mechanics/Asteroid.js"></script>
+    <script src="./src/mechanics/Projectile.js"></script>
+    <script src="./src/mechanics/Ship.js"></script>
+    
+    <!-- Load game systems -->
+    <script src="./src/system/GameInfo.js"></script>
+    
     <script src="sketch.js"></script>
   
-
 </body></html>

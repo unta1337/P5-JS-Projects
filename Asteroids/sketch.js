@@ -35,7 +35,8 @@ function setup() {
   textScl = width > height ? height : width;
   textScl *= 0.04;
   
-  player = new Ship(createVector(width / 2, height / 2), scl);
+  player = new Ship(createVector(width / 2, height / 2), scl * 0.4);
+  
   
   asteroids = [];
   numberOfAsteroids = floor(0.1 * scl);
@@ -47,19 +48,21 @@ function setup() {
     let pos = p5.Vector.fromAngle(random(TWO_PI), r);
     pos.add(player.pos);
     
-    asteroids.push(new Asteroid(pos, random(0.4, 2) * scl)); 
+    asteroids.push(new Asteroid(pos, random(0.4, 2) * scl));
   }
 }
 
 function draw() {
   background(0);
   
+  //frameRate(1);
+  
   stroke(theme);
   strokeWeight(scl * 0.03);
   noFill();
   
   theme = themes[themeIndex];
-  
+
   player.show();
   if (gameEnd != 'lose') {
     player.controls();
@@ -93,6 +96,11 @@ function draw() {
       asteroid.update();
     }
     asteroid.show();
+  }
+  
+  for (let asteroid of asteroids) {
+    asteroid.update();
+    asteroid.show(); 
   }
   
   if (asteroids.length === 0 && !gameEnd) {
