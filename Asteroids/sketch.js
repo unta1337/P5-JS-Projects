@@ -1,3 +1,7 @@
+// Asteroids by S.Y. Kim
+// Version 1.3
+// p5.js: https://editor.p5js.org/unta1337/sketches/wj7e0suFy
+
 let themes, theme
 let themeIndex = 0;
 
