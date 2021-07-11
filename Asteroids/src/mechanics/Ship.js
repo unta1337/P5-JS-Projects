@@ -66,8 +66,8 @@ class Ship extends object {
     let projectileRadius = this.height * 0.03;
     let angle = this.heading - Tools.degToRad(90);
     
-    let x = this.position.x + projectileRadius * cos(angle);
-    let y = this.position.y + projectileRadius * sin(angle);
+    let x = this.position.x + radius * cos(angle);
+    let y = this.position.y + radius * sin(angle);
     
     this.projectiles.push(new Projectile(createVector(x, y), angle, projectileRadius));
   }
@@ -112,7 +112,9 @@ class Ship extends object {
     endShape(CLOSE);
     
     pop();
-    //super.show();
+    if (showHitbox) {
+      super.show();
+    }
     
     for (let i = 0; i < this.projectiles.length; i++) {
       this.projectiles[i].show();

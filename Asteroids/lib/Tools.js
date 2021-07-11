@@ -7,41 +7,43 @@ class Tools {
     return radians * (180 / PI); 
   }
   
-  static text(x, y, text, size, center) {
+  static text(string, x, y, size, orientation) {
     push();
     noFill();
-    let textLength = text.length;
+    
+    let stringLength = string.length;
+    
     let padding = size / 4;
-    let len = size / 2;
-    let stringLen = len * textLength + padding * (textLength - 1);
+    let length = size / 2;
+    
+    let textLength = length * stringLength + padding * (stringLength - 1);
     
     let l = new Letters();
     
-    if (center) {
-      translate(x - stringLen / 2, y - len); 
+    if (orientation === 'corner') {
+      translate(x, y);
+    } else if (orientation === 'center') {
+      translate(x - textLength / 2, y - length);
     } else {
-      translate(x, y); 
+      throw new Error(`Invalid orientation value of {orientation}.`);
     }
     
-    for (let i = 0; i < textLength; i++) {
+    for (let i = 0; i < stringLength; i++) {
       beginShape();
       
-      let charCode = text.charCodeAt(i);
+      let charCode = string.charCodeAt(i);
       
-      if (!l.letters[charCode]) {
+      if (string[i] === ' ' || !l.letters[charCode]) {
         continue; 
       }
       
-      if (text[i] === ' ') {
-        continue;
-      }
-      
       for (let j = 0; j < l.letters[charCode].length; j++) {
-        vertex((len + padding) * i + l.letters[charCode][j][0] * len, l.letters[charCode][j][1] * len);
+        vertex((length + padding) * i + l.letters[charCode][j][0] * length, l.letters[charCode][j][1] * length);
       }
       
       endShape();
     }
+    
     pop();
   }
 }

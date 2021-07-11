@@ -65,6 +65,8 @@ class Asteroid extends object {
     }
     endShape(CLOSE);
     pop();
-    //super.show();
+    if (showHitbox) {
+      super.show();
+    }
   }
 }

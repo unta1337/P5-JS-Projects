@@ -1,32 +1,53 @@
 class GameInfo {
   static show() {
+    let info = [
+      'ASTEROIDS BY SY KIM',
+      ' ',
+      'PRESS ARROW KEYS TO MOVE',
+      'PRESS SPACEBAR TO SHOOT',
+      'PRESS R TO RESET GAME',
+      'PRESS T TO CONTINUE GAME',
+      ' ',
+      'PRESS C TO CHANGE COLOR THEME',
+      'PRESS Z TO SHOW HITBOX',
+      'PRESS X TO SHOW FPS',
+      ' ',
+      'HOLD H TO SHOW HELP MESSAGE BOX'
+    ];
+    
     push();
     noFill();
     rectMode(CENTER);
+    
     let posY = height / 2;
     let size = textScl;
     let offset = size * 1.5;
-    rect(width / 2, height / 2, size * 25, size * 16);
-    Tools.text(width / 2, posY + offset * -4.5, 'ASTEROIDS BY SY KIM', size, true);
+    let offsetFactor = -info.length / 2 + 0.5;
     
-    Tools.text(width / 2, posY + offset * -2.5, 'PRESS ARROW KEYS TO MOVE', size, true);
-    Tools.text(width / 2, posY + offset * -1.5, 'PRESS SPACEBAR TO SHOOT', size, true); 
-    Tools.text(width / 2, posY + offset * -0.5, 'PRESS R TO RESET GAME', size, true);
-    Tools.text(width / 2, posY + offset * 0.5, 'PRESS T TO CONTINUE GAME', size, true);
+    rect(width / 2, height / 2, size * 24.5, info.length * size * 1.6);
+    for (let i = 0; i < info.length; i++) {
+      Tools.text(info[i], width / 2, posY + offset * offsetFactor, size, 'center');
+      offsetFactor += 1;
+    }
     
-    Tools.text(width / 2, posY + offset * 2.5, 'PRESS C TO CHANGE COLOR THEME', size, true);
-    
-    Tools.text(width / 2, posY + offset * 4.5, 'HOLD H TO SHOW HELP MESSAGE BOX', size, true); 
     pop();
   }
   
-  static score(score) {
+  static showCurrentScore() {
     push();
     noFill();
     let size = textScl;
     let offset = size * 1.5;
-    Tools.text(width / 2, offset, 'SCORE ' + score, size, true);
-
+    Tools.text('SCORE ' + score, width / 2, offset, size, 'center');
+    pop();
+  }
+  
+  static showFPS() {
+    push();
+    noFill();
+    let size = textScl;
+    let offset = size * 1.5;
+    Tools.text('FPS ' + round(frameRate()), width / 2, height - offset, size, 'center');
     pop();
   }
 }
